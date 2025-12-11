@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Badges System - EduHive</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/badge-editor.css', 'resources/js/badge-editor.js'])
     <style>
         * {
             margin: 0;
@@ -489,32 +492,93 @@
                 </div>
             </div>
         </div>
-
+<!-- Crear Badge Tab -->        
         <div id="create" class="tab-content">
-            <div class="card" style="max-width: 600px; margin: 0 auto;">
-                <h3 class="card-title">Crear Nuevo Badge</h3>
-                <form id="createBadgeForm" onsubmit="createBadge(event)">
-                    <div class="form-group">
-                        <label>Nombre del Badge *</label>
-                        <input type="text" id="badgeName" required placeholder="Ej: Experto en Python">
+        <div class="card" style="max-width: 1100px; margin: 0 auto;">
+            <h3 class="card-title">Diseñador de Badges</h3>
+            
+            <div class="grid-2" style="grid-template-columns: 300px 1fr; gap: 20px;">
+                <div style="border-right: 1px solid #e5e7eb; padding-right: 20px;">
+                    <form id="createBadgeForm">
+                        <div class="form-group">
+                            <label>Nombre del Badge *</label>
+                            <input type="text" id="badgeName" required placeholder="Ej: Certificado Avanzado">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="badgeDescription" required rows="2" style="font-size: 13px;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Forma de Recorte</label>
+                            <select id="badgeShapeSelect" class="w-full p-2 border rounded">
+                                <option value="square">Cuadrado (Original)</option>
+                                <option value="circle">Círculo</option>
+                                <option value="hexagon">Hexágono</option>
+                            </select>
+                        </div>
+                        
+                        <div class="info-box" style="margin-top: 20px; font-size: 12px;">
+                            <p>💡 Tip: Usa el panel de capas a la derecha para organizar los elementos.</p>
+                        </div>
+
+                        <button type="button" onclick="saveBadgeWithEditor()" class="btn-primary" style="margin-top: 20px; width: 100%;">
+                            💾 Guardar y Crear
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <div style="background: #f8fafc; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px 8px 0 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <button type="button" class="btn-secondary" id="btnBg" title="Subir imagen de fondo">🖼️ Fondo</button>
+                        <input type="file" id="bgInput" hidden accept="image/*">
+                        
+                        <button type="button" class="btn-secondary" id="btnText" title="Agregar texto">Aa Texto</button>
+                        
+                        <div style="border-left: 1px solid #cbd5e1; height: 24px; margin: 0 5px;"></div>
+                        
+                        <input type="color" id="colorPicker" value="#4f46e5" title="Color del objeto" style="height: 30px; width: 40px; cursor: pointer;">
+                        
+                        <button type="button" class="btn-secondary" id="btnDelete" title="Eliminar seleccionado" style="color: #ef4444;">🗑️</button>
                     </div>
-                    <div class="form-group">
-                        <label>Descripción *</label>
-                        <textarea id="badgeDescription" required rows="3" placeholder="Describe qué representa este badge..."></textarea>
+
+                    <div style="display: flex; height: 450px; border: 1px solid #e2e8f0; border-top: none;">
+                        <div style="flex: 1; background: #e5e7eb; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                            <div style="position: absolute; inset: 0; background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 20px 20px; opacity: 0.2; pointer-events: none;"></div>
+                            <canvas id="badgeCanvas"></canvas>
+                        </div>
+
+                        <div style="width: 200px; background: white; border-left: 1px solid #e2e8f0; display: flex; flex-direction: column;">
+                            <div style="padding: 8px 12px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; font-weight: 600; font-size: 13px; color: #475569;">
+                                Capas
+                            </div>
+                            <div id="layersList" style="flex: 1; overflow-y: auto; padding: 5px;">
+                                <div class="empty-state" style="padding: 20px; font-size: 12px; text-align: center; color: #94a3b8;">Lienzo vacío</div>
+                            </div>
+                            
+                            <div style="padding: 10px; border-top: 1px solid #e2e8f0; background: #f8fafc;">
+                                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px;">Agregar Icono:</div>
+                                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iOCIgcj0iNyIvPjxwb2x5bGluZSBwb2ludHM9IjguMjEgMTMuODkgNyAyMyAxMiAyMCAxNyAyMyAxNS43OSAxMy44OCIvPjwvc3ZnPg==" 
+                                        class="asset-btn" data-type="svg" data-name="Cinta" title="Cinta" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
+                                    
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxwb2x5Z29uIHBvaW50cz0iMTIgMiAxNS4wOSA4LjI2IDIyIDkuMjcgMTcgMTQuMTQgMTguMTggMjEuMDIgMTIgMTcuNzcgNS44MiAyMS4wMiA3IDE0LjE0IDIgOS4yNyA4LjkxIDguMjYgMTIgMiIvPjwvc3ZnPg==" 
+                                        class="asset-btn" data-type="svg" data-name="Estrella" title="Estrella" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
+                                    
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDc1NTY5IiBzdHJva2Utd2lkdGg9IjIiPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIi8+PC9zdmc+" 
+                                        class="asset-btn" data-type="rect" title="Rectángulo" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
+                                    
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDc1NTY5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PC9zdmc+" 
+                                        class="asset-btn" data-type="circle" title="Círculo" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Criterios de Obtención *</label>
-                        <textarea id="badgeCriteria" required rows="2" placeholder="Completar el curso con 80% de aprobación..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>URL de Imagen (opcional)</label>
-                        <input type="url" id="badgeImage" placeholder="https://ejemplo.com/badge.png">
-                    </div>
-                    <button type="submit" class="btn-primary">Crear Badge</button>
-                </form>
+                </div>
             </div>
         </div>
-
+    </div>
+    
+<!-- Crear Badge Tab -->
         <div id="issue" class="tab-content">
             <div class="card" style="max-width: 600px; margin: 0 auto;">
                 <h3 class="card-title">Emitir Badge</h3>
