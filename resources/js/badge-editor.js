@@ -29,12 +29,12 @@ function initCanvas() {
 }
 
 function setupEventListeners() {
-    // Botón Fondo
+    // Botón Imagen
     document.getElementById('btnBg').addEventListener('click', () => {
         document.getElementById('bgInput').click();
     });
 
-    // Input File (Fondo)
+    // Input File (Imagen)
     document.getElementById('bgInput').addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -43,7 +43,7 @@ function setupEventListeners() {
             fabric.Image.fromURL(f.target.result, (img) => {
                 img.scaleToWidth(400);
                 img.set({ 
-                    name: 'Fondo (' + file.name + ')',
+                    name: 'Imagen (' + file.name + ')',
                     left: 200, top: 200, originX: 'center', originY: 'center'
                 });
                 canvas.add(img);
@@ -93,7 +93,7 @@ function setupEventListeners() {
             
             if (type === 'svg') {
                 fabric.Image.fromURL(btn.src, (img) => {
-                    img.scale(3);
+                    img.scaleToWidth(canvas.width * 0.5);
                     img.set({ 
                         name: btn.dataset.name || 'Icono',
                         left: 200, top: 200, originX: 'center', originY: 'center' 

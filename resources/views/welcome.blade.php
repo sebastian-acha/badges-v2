@@ -588,6 +588,12 @@
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzIyYzU1ZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0yMiAxMS4wOFYxMmExMCAxMCAwIDEgMS01LjkzLTkuMTQiLz48cG9seWxpbmUgcG9pbnRzPSIyMiA0IDEyIDE0LjAxIDkgMTEuMDEiLz48L3N2Zz4=" 
                                     class="asset-btn" data-type="svg" data-name="Verificado" title="Verificado">
                             </div>
+
+                            <div style="margin-top: 10px;">
+                                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px;">Pegar SVG (Base64):</div>
+                                <textarea id="b64SvgInput" rows="2" style="width: 100%; font-size: 10px; font-family: monospace;" placeholder="data:image/svg+xml;base64,..."></textarea>
+                                <button id="btnAddB64Svg" class="btn-secondary" style="width: 100%; margin-top: 5px; font-size: 12px; padding: 5px;">Añadir SVG</button>
+                            </div>
                             </div>
                         </div>
                     </div>
