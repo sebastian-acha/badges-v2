@@ -514,6 +514,8 @@
                                 <option value="square">Cuadrado (Original)</option>
                                 <option value="circle">Círculo</option>
                                 <option value="hexagon">Hexágono</option>
+                                <option value="octagon">Octágono</option> 
+                                <option value="shield">Escudo</option>
                             </select>
                         </div>
                         
@@ -556,20 +558,36 @@
                             </div>
                             
                             <div style="padding: 10px; border-top: 1px solid #e2e8f0; background: #f8fafc;">
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px;">Agregar Icono:</div>
-                                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iOCIgcj0iNyIvPjxwb2x5bGluZSBwb2ludHM9IjguMjEgMTMuODkgNyAyMyAxMiAyMCAxNyAyMyAxNS43OSAxMy44OCIvPjwvc3ZnPg==" 
-                                        class="asset-btn" data-type="svg" data-name="Cinta" title="Cinta" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
-                                    
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxwb2x5Z29uIHBvaW50cz0iMTIgMiAxNS4wOSA4LjI2IDIyIDkuMjcgMTcgMTQuMTQgMTguMTggMjEuMDIgMTIgMTcuNzcgNS44MiAyMS4wMiA3IDE0LjE0IDIgOS4yNyA4LjkxIDguMjYgMTIgMiIvPjwvc3ZnPg==" 
-                                        class="asset-btn" data-type="svg" data-name="Estrella" title="Estrella" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
-                                    
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDc1NTY5IiBzdHJva2Utd2lkdGg9IjIiPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIi8+PC9zdmc+" 
-                                        class="asset-btn" data-type="rect" title="Rectángulo" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
-                                    
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDc1NTY5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PC9zdmc+" 
-                                        class="asset-btn" data-type="circle" title="Círculo" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #ddd; padding: 2px; background: white;">
-                                </div>
+                                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px;">Librería de Assets:</div>
+                            <div style="display: flex; gap: 5px; flex-wrap: wrap; max-height: 100px; overflow-y: auto;">
+                                <button class="asset-btn" data-type="rect" title="Cuadrado" style="background: white;">⬜</button>
+                                <button class="asset-btn" data-type="circle" title="Círculo" style="background: white;">⚪</button>
+                                <button class="asset-btn" data-type="triangle" title="Triángulo" style="background: white;">🔺</button>
+
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iOCIgcj0iNyIvPjxwb2x5bGluZSBwb2ludHM9IjguMjEgMTMuODkgNyAyMyAxMiAyMCAxNyAyMyAxNS43OSAxMy44OCIvPjwvc3ZnPg==" 
+                                    class="asset-btn" data-type="svg" data-name="Cinta" title="Cinta">
+                                
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjIiPjxwb2x5Z29uIHBvaW50cz0iMTIgMiAxNS4wOSA4LjI2IDIyIDkuMjcgMTcgMTQuMTQgMTguMTggMjEuMDIgMTIgMTcuNzcgNS44MiAyMS4wMiA3IDE0LjE0IDIgOS4yNyA4LjkxIDguMjYgMTIgMiIvPjwvc3ZnPg==" 
+                                    class="asset-btn" data-type="svg" data-name="Estrella" title="Estrella">
+
+                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PgoKCjwhLS0gTGljZW5zZTogUEQuIE1hZGUgYnkgaWNvbnM4OiBodHRwczovL2dpdGh1Yi5jb20vaWNvbnM4L3dpbmRvd3MtMTAtaWNvbnMgLS0+CjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCgkgdmlld0JveD0iMCAwIDMyIDMyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggaWQ9IlhNTElEXzQ1MF8iIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTTIyLjc4Niw2CgljMCwwLDAuNzE1LTEsMi4yMTQtMWMxLjM3NywwLDMsMS4wNSwzLDNjMCwzLjIxLTUsNC4yNDItNSw4YzAsMC45ODIsMSwxLjk5MywxLDEuOTkzIi8+CjxwYXRoIGlkPSJYTUxJRF8zNjVfIiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik04LDE3Ljk5MwoJYzAsMCwxLTEuMDExLDEtMS45OTNjMC0zLjc1OC01LTQuNzktNS04YzAtMS45NSwxLjYyMy0zLDMtM2MxLjQ5OCwwLDIuMjE0LDEsMi4yMTQsMSIvPgo8cGF0aCBpZD0iWE1MSURfNDM1XyIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik05LDZjMCw2LjUyOCwzLjY4OSwxNyw2Ljk4MywxNwoJUzIzLDEyLjU2OCwyMyw2SDl6Ii8+CjxwYXRoIGlkPSJYTUxJRF8zNzdfIiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTTE4LDI0aC00Yy0xLjY1NywwLTMsMS4zNDMtMywzdjAKCWgxMHYwQzIxLDI1LjM0MywxOS42NTcsMjQsMTgsMjR6Ii8+CjxsaW5lIGlkPSJYTUxJRF8zNzhfIiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgeDE9IjE2IiB5MT0iMTUiIHgyPSIxNiIgeTI9IjEwIi8+Cjwvc3ZnPg==" 
+                                    class="asset-btn" data-type="svg" data-name="Trofeo" title="Trofeo">
+
+                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBNSVQuIE1hZGUgYnkgTHVjaWRlIENvbnRyaWJ1dG9yczogaHR0cHM6Ly9sdWNpZGUuZGV2LyAtLT4KPHN2ZyAKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgd2lkdGg9IjI0IgogIGhlaWdodD0iMjQiCiAgdmlld0JveD0iMCAwIDI0IDI0IgogIGZpbGw9Im5vbmUiCiAgc3Ryb2tlPSIjMDAwMDAwIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxwYXRoIGQ9Ik0yIDRsMyAxMmgxNGwzLTEyLTYgNy00LTctNCA3LTYtN3ptMyAxNmgxNCIgLz4KPC9zdmc+" 
+                                    class="asset-btn" data-type="svg" data-name="Corona" title="Corona">
+
+                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBMaWNlbnNlOiBNSVQuIE1hZGUgYnkgZGVzaWdubW9kbzogaHR0cHM6Ly9naXRodWIuY29tL2Rlc2lnbm1vZG8vRmxhdC1VSSAtLT4KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9Ii04IDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjMjk4MEI5IiBkPSJNMjcgMEgwbDMwIDYwaDI3TDI3IDB6Ii8+PHBhdGggZmlsbD0iIzM0OThEQiIgZD0iTTU3IDBoMjdMNTQgNjBIMjdMNTcgMHoiLz48cGF0aCBmaWxsPSIjRjFDNDBFIiBkPSJNNDIgNDBjMTYuNTY4IDAgMzAgMTMuNDM0IDMwIDMwIDAgMTYuNTY4LTEzLjQzMiAzMC0zMCAzMC0xNi41NjcgMC0zMC0xMy40MzItMzAtMzBzMTMuNDMxLTMwIDMwLTMweiIvPjxwYXRoIGZpbGw9IiNEOEIwMEMiIGQ9Ik00MiA0NmMtMTMuMjU1IDAtMjQgMTAuNzQ1LTI0IDI0czEwLjc0NSAyNCAyNCAyNCAyNC0xMC43NDUgMjQtMjQtMTAuNzQ1LTI0LTI0LTI0em0wIDQ2Yy0xMi4xNDkgMC0yMi05Ljg1LTIyLTIyIDAtMTIuMTQ4IDkuODUxLTIyIDIyLTIyIDEyLjE1IDAgMjIgOS44NTIgMjIgMjIgMCAxMi4xNS05Ljg1IDIyLTIyIDIyeiIvPjxwYXRoIGZpbGw9IiNDREE3MEMiIGQ9Ik0xNi4zNzcgODUuNjA5YzMuOTM1IDYuNDQzIDEwLjIzNCAxMS4yODMgMTcuNjkgMTMuMzIyTDUxIDgybC01LTE5LTYuMDA0LTEuMDExLTIzLjYxOSAyMy42MnoiLz48cGF0aCBmaWxsPSIjQjg5NjBBIiBkPSJNMzkuMTczIDkzLjgyOWwxLjg1My0xLjg1NGMtOC4yNDMtLjM1OS0xNS4zMDgtNS4yNTYtMTguNzYxLTEyLjI1NGwtMS40ODYgMS40ODVjMy42MDcgNi44MTcgMTAuMzk4IDExLjY4MyAxOC4zOTQgMTIuNjIzeiIvPjxwYXRoIGZpbGw9IiNGRkY1NUMiIGQ9Ik00NS45ODggODEuOThWNjUuOTczaC01Ljk5MlY2MS45OWMuODg4LjAyMSAxLjc0Ny4wOSAyLjU3NC0uMDc1IDEuMDIxLS4yMDMgMS4zMTItLjI3OCAxLjk0OS0uNzEyIDEuMTA5LS43NDkgMS4zNzMtMS4yMyAxLjc2OS0xLjkyNi41NTgtLjk3OS41MDctMS4zMTEuNjQ5LTIuMjc5aDQuMDY4VjgxLjk4aC01LjAxN3oiLz48L3N2Zz4=" 
+                                    class="asset-btn" data-type="svg" data-name="Medalla" title="Medalla">
+
+                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PgoKPCEtLSBMaWNlbnNlOiBDQzAgTGljZW5zZS4gTWFkZSBieSBTVkcgUmVwbzogaHR0cHM6Ly93d3cuc3ZncmVwby5jb20vc3ZnLzM4MDkyOS9ncmFkdWF0aW9uLXVuaXZlcnNpdHktY2VyZW1vbnktZWR1Y2F0aW9uLWdyYWR1YXRlIC0tPgo8c3ZnIGZpbGw9IiMwMDAwMDAiIHdpZHRoPSIyNTBweCIgaGVpZ2h0PSIyNTBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgo8ZyBpZD0iR3JhZHVhdGlvbiI+Cgo8cG9seWdvbiBwb2ludHM9IjQ0NS4wNTUgMzg0Ljc5NCA0NDUuMDU1IDIyMS44NjQgNDE4LjgwNSAyMzQuOTg5IDQxOC44MDUgMzg0Ljc3NyA0MDEuMzAxIDQyOS43ODUgNDYyLjU1MSA0MjkuNzg1IDQ0NS4wNTUgMzg0Ljc5NCIvPgoKPHBhdGggZD0iTTIyOS4wNjQ4LDMwNi4zNzA4bC0xMDcuNzY0My01My44OHY1My43NzU0YzAsMzYuMjQzMyw1OC43NjM0LDY1LjYyNSwxMzEuMjUsNjUuNjI1LDcyLjQ4ODcsMCwxMzEuMjUtMjkuMzgxNywxMzEuMjUtNjUuNjI1VjI1Mi40OUwyNzYuMDI3NywzMDYuMzc0MUMyNTcuNTgxMywzMTMuNjgxLDI0Ny41MTMzLDMxMy42Nzg5LDIyOS4wNjQ4LDMwNi4zNzA4WiIvPgoKPHBhdGggZD0iTTI2NC4yOTEyLDI4Mi44OTY5bDE4Ni41MjA3LTkzLjI2YzYuNDU3OS0zLjIyODksNi40NTc5LTguNTEwNywwLTExLjc0bC0xODYuNTIwNy05My4yNmMtNi40NTU2LTMuMjI4OS0xNy4wMjE0LTMuMjI4OS0yMy40NzkzLDBsLTE4Ni41MjA3LDkzLjI2Yy02LjQ1NTYsMy4yMjg5LTYuNDU1Niw4LjUxMDcsMCwxMS43NGwxODYuNTIwNyw5My4yNkMyNDcuMjcsMjg2LjEyNTgsMjU3LjgzNTYsMjg2LjEyNTgsMjY0LjI5MTIsMjgyLjg5NjlaIi8+Cgo8L2c+Cgo8L3N2Zz4=" 
+                                    class="asset-btn" data-type="svg" data-name="Graduación" title="Graduación">
+
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZjOGEwNSIgc3Ryb2tlPSIjZmM4YTA1IiBzdHJva2Utd2lkdGg9IjIiPjxwb2x5Z29uIHBvaW50cz0iMTMgMiAzIDE0IDEyIDE0IDExIDIyIDIxIDEwIDEyIDEwIDEzIDIiLz48L3N2Zz4=" 
+                                    class="asset-btn" data-type="svg" data-name="Rayo" title="Rayo">
+
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzIyYzU1ZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0yMiAxMS4wOFYxMmExMCAxMCAwIDEgMS01LjkzLTkuMTQiLz48cG9seWxpbmUgcG9pbnRzPSIyMiA0IDEyIDE0LjAxIDkgMTEuMDEiLz48L3N2Zz4=" 
+                                    class="asset-btn" data-type="svg" data-name="Verificado" title="Verificado">
+                            </div>
                             </div>
                         </div>
                     </div>

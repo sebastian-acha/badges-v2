@@ -115,7 +115,16 @@ function setupEventListeners() {
                 });
                 canvas.add(circ);
                 canvas.setActiveObject(circ);
+            }// ... dentro del forEach de los botones
+            else if (type === 'triangle') {
+                const triangle = new fabric.Triangle({
+                    width: 100, height: 100, fill: document.getElementById('colorPicker').value, name: 'Triángulo',
+                    left: 200, top: 200, originX: 'center', originY: 'center'
+                });
+                canvas.add(triangle);
+                canvas.setActiveObject(triangle);
             }
+// ...
         });
     });
 }
@@ -202,20 +211,45 @@ window.saveBadgeWithEditor = async function() {
     }
 
     // Aplicar recorte
-    let clipPath;
-    if (shape === 'circle') {
-        clipPath = new fabric.Circle({ radius: 200, left: 200, top: 200, originX: 'center', originY: 'center' });
-    } else if (shape === 'hexagon') {
+let clipPath;
+    const centerX = 200;
+    const centerY = 200;
+
+    if (shapeType === 'circle') {
+        clipPath = new fabric.Circle({ 
+            radius: 200, left: centerX, top: centerY, originX: 'center', originY: 'center' 
+        });
+    } else if (shapeType === 'hexagon') {
         clipPath = new fabric.Polygon([
             {x: 100, y: 0}, {x: 300, y: 0}, {x: 400, y: 200},
             {x: 300, y: 400}, {x: 100, y: 400}, {x: 0, y: 200}
-        ], { left: 200, top: 200, originX: 'center', originY: 'center' });
+        ], { left: centerX, top: centerY, originX: 'center', originY: 'center' });
+    } else if (shapeType === 'octagon') {
+        // Puntos para un octágono
+        const d = 120; // desplazamiento de esquinas
+        clipPath = new fabric.Polygon([
+            {x: d, y: 0}, {x: 400-d, y: 0}, 
+            {x: 400, y: d}, {x: 400, y: 400-d},
+            {x: 400-d, y: 400}, {x: d, y: 400},
+            {x: 0, y: 400-d}, {x: 0, y: d}
+        ], { left: centerX, top: centerY, originX: 'center', originY: 'center' });
+    } else if (shapeType === 'shield') {
+        // Ruta SVG para un escudo
+        const pathData = "M200,0 C200,0 400,50 400,150 C400,300 200,400 200,400 C200,400 0,300 0,150 C0,50 200,0 200,0 Z";
+        clipPath = new fabric.Path(pathData, {
+            left: centerX, top: centerY, originX: 'center', originY: 'center'
+        });
+        // Ajustamos un poco la escala del escudo para que llene el canvas
+        clipPath.scaleX = 1;
+        clipPath.scaleY = 1;
+    } else {
+        canvas.clipPath = null;
+        canvas.requestRenderAll();
+        return;
     }
     
-    if(clipPath) {
-        canvas.clipPath = clipPath;
-        canvas.requestRenderAll();
-    }
+    canvas.clipPath = clipPath;
+    canvas.requestRenderAll();
 
     // Exportar
     setTimeout(async () => {
